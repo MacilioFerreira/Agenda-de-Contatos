@@ -1,0 +1,84 @@
+.divider {
+	border-width: 5px;
+	margin-left: -22px;
+}
+
+.container-fluid {
+	margin-left: 10px;
+}
+
+.row{
+	margin-top: 15px;
+}
+
+#msgErro{
+	align-items: center;
+	align-content: center;
+	margin-top: 100px;
+}
+
+#msgErroTexto{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 40px;
+	align-self: center;
+}
+
+#titulo {
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+#adicionar {
+	margin-top: 32px; 
+	margin-left: 10px;
+	display: block;
+}
+
+#cadastrar {
+	margin-top: 40px;
+	margin-left: 15px;
+	display: block;
+}
+
+#lista_pesquisar{
+	margin-top: 32px; 
+	margin-left: 10px;
+	display: block;	
+}
+
+#lista_cadastrar{
+	margin-top: 32px; 
+	margin-left: 20px;
+	display: block;
+}
+
+#formFone{
+	margin-left: -25px;
+}
+
+#tabela{
+	background-color: #e0e0e0;
+	line-height: 14px;
+}
+
+#divTabelaListar{
+	margin-left: 25px;
+}
+
+#divTabelaVisualizar{
+	margin-top:20px;
+	margin-left: 25px;
+}
+
+h3{
+	align-items: "justify";
+}
+
+table{
+	margin-top: 10px;
+}
+
+td {
+	align-items: center;
+	line-height: 15px;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+
+<head>
+
+	<title> Listagem de Pessoa</title>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" />
+	
+	<link type="text/css" href="/css/cadastro_pessoa.css" rel="stylesheet" />
+	<script type="text/javascript" src="/js/pessoa.js"></script>
+
+</head>
+<body>
+
+	<div id="titulo">
+		<h3>Listagem de Pessoa</h3>
+	</div>
+	
+		<form method="GET" name="listarForm" id="id_form">
+				<div class="container-fluid">
+						<div class="col-sm-6">
+							<div class="white-box">					
+								<div class="row">
+									<div class="col-sm-4 form-group">
+										<label>Nome:</label>
+										<div class="input-group">
+											<input type="text" class="form-control form-control-sm" name="nome" id="nome"/>
+										</div>
+									</div>
+														
+									<div class="col-sm-4 form-group">
+										<label>CPF:</label>
+											<div class="input-group">
+												<input type="text" class="form-control form-control-sm" name="cpf" id="cpf"/>
+											</div>
+									</div>
+									<div>
+										<input class="btn btn-default btn-sm" type="button" value="Pesquisar" name="Pesquisar" onclick="pesquisar();" id="lista_pesquisar"/>
+									</div>
+									
+									<div> 
+										<input class="btn btn-default btn-sm" type="button" value="Cadastrar" name="Cadastrar" onclick="cadastrar();" id="lista_cadastrar" />
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>   	
+		   	</form>
+	
+	<div class="col-sm-10" id="divTabelaListar">
+		   	<table class="table table-bordered" >
+				<thead>
+					<tr id="tabela">
+						<th>ID</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>CPF</th>
+						<th>Idade</th>
+						<th>Quantidade de Telefones</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody >
+					<tr th:each="pessoa : ${pessoas}">
+						<td th:text="${pessoa.id}"> </td>
+						<td th:text="${pessoa.nome}"></td>
+						<td th:text="${pessoa.email}"></td>
+						<td th:text="${pessoa.cpf}"> </td>
+						<td th:text="${pessoa.idade} + ' anos'"> </td>
+						<td th:text="${pessoa.telefones.size()}"> </td>
+						<td> <a th:href="@{${'/pessoa/editar/'+pessoa.id}}"> Editar </a> | <a th:href="@{${'/pessoa/excluir/'+pessoa.id}}"> Deletar</a>  </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	<script src="/webjars/jquery/2.2.4/jquery.js"></script>
+	
+</body>
+
+</html>

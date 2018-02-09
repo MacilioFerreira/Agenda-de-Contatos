@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+
+<head>
+
+<title> Resultado da busca</title>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" />
+
+<link type="text/css" href="/css/cadastro_pessoa.css" rel="stylesheet" />
+
+</head>
+<body>
+
+	<div id="titulo">
+		<h3 th:if="${pessoas.size() > 1}" align="justify">  Pessoas </h3>
+		<h3 th:if="${pessoas.size() == 1}" align="justify"> Pessoa </h3>
+	</div>
+		
+	<div class="col-sm-10" id="divTabelaVisualizar">
+		   	<table class="table table-bordered" >
+				<thead>
+					<tr id="tabela">
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>CPF</th>
+						<th>Idade</th>
+						<th>Quantidade de Telefones</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody > 
+					<tr th:each="pessoa : ${pessoas}">
+						<td th:text="${pessoa.nome}"></td>
+						<td th:text="${pessoa.email}"></td>
+						<td th:text="${pessoa.cpf}"> </td>
+						<td th:text="${pessoa.idade} + ' anos'"> </td>
+						<td th:text="${pessoa.telefones.size()}"> </td>
+						<td> <a th:href="@{${'/pessoa/editar/'+pessoa.id}}"> Editar </a> | <a th:href="@{${'/pessoa/excluir/'+pessoa.id}}"> Deletar</a>  </td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+	
+	<script src="/webjars/jquery/2.2.4/jquery.js"></script>
+	<script type="text/javascript">	</script>
+	
+</body>
+
+</html>

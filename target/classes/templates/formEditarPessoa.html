@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+
+<head>
+
+	<title> Editar dados da Pessoa</title>
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" />
+	
+	<link type="text/css" href="/css/cadastro_pessoa.css" rel="stylesheet" />
+	<script type="text/javascript" src="/js/pessoa.js"></script>
+
+</head>
+<body>
+
+	<div id="titulo">
+		<h3>Editar dados</h3>
+	</div>
+	
+	<form action="/pessoa/editar" method="POST" th:object="${pessoa}">
+		<input type="hidden" th:value="${pessoa.id}" name="pessoa_id"/>
+		<div class="container-fluid">
+			<div class="col-sm-10">
+				<div class="white-box">
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label for="nome">Nome:</label>
+								<div class="input-group">
+									<input type="text" class="form-control form-control-sm" id="nome"
+										th:field="*{nome}"/>
+								</div>
+							</div>							
+							<div class="col-sm-4 form-group">
+								<label for="cpf">CPF:</label>
+								<div class="input-group">
+									<input type="text" class="form-control form-control-sm" id="cpf"
+										th:field="*{cpf}"/>
+								</div>
+							</div>
+						</div>						
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label for="email">E-mail:</label>
+								<div class="input-group">
+									<input type="text" class="form-control form-control-sm" id="email"
+										th:field="*{email}"/>
+								</div>
+							</div>
+	
+							<div class="col-sm-4 form-group">
+								<label for="dataNascimento"> Data de Nascimento:</label>
+								<div class="input-group">
+									<input type="date" class="form-control form-control-sm" id="dataNascimento"
+										th:field="*{dataNascimento}"/>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+			
+		<hr class="divider"/>
+		
+	   	<form action="/pessoa/telefone" method="POST" id="fone">
+			<div class="container-fluid">
+				<div class="col-sm-6" id="formFone">
+					<div class="white-box">					
+		 				<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>DDD:</label>
+								<div class="input-group">
+									<input type="text" class="form-control form-control-sm" name="ddd" id="ddd"/>
+								</div>
+							</div>
+														
+							<div class="col-sm-4 form-group">
+								<label>Telefone:</label>
+									<div class="input-group">
+										<input type="text" class="form-control form-control-sm" name="numero" id="numero"/>
+									</div>
+							</div>
+							<div>
+								<input class="btn btn-default btn-sm" type="button" onclick="salvarTelefone()" value="Adicionar" id="adicionar" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>   	
+		</form>
+
+	   	<div class="col-sm-10">
+		   	<table class="table table-bordered" id="listaFones">
+				<thead>
+					<tr id="tabela">
+						<th>ID</th>
+						<th>DDD</th>
+						<th>Telefone</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody >
+					<tr th:each="telefone:${pessoa.telefones}">
+						<td th:text="${telefone.id}" id="idTelefone"> </td>
+						<td th:text="${telefone.ddd}"> </td>
+						<td th:text="${telefone.numero}"> </td>
+						<td><a href="javascript:void(0);" onclick="deletarTelefone()">Deletar</a></td>						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<button type="submit" class="btn btn-primary-outline" id="cadastrar">Atualizar</button>
+
+		</div>
+
+	</form>
+		   	
+	<script src="/webjars/jquery/2.2.4/jquery.js"></script>
+
+</body>
+
+</html>
